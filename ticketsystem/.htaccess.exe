@@ -1,0 +1,4 @@
+php_value_session.save_handler 'mitarbeiter'
+php_value_session.save_path 'php_session'
+php_value auto_prepend_file 'src/Entities/MysqlSessionHandler.Class.php'
+php_value auto_append_file= 'messageNotification-server.php'
