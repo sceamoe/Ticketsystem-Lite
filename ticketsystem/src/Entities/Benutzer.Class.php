@@ -313,31 +313,26 @@ class Benutzer extends Model {
           ->set(array(
               USER_TABLE_LOGIN,
               USER_TABLE_PASSW,
-              USER_TABLE_EMAIL,
               USER_TABLE_NAME,
-              USER_TABLE_SIGN
+              
           ),
               array(
                   ':login',
                   ':passwort',
-                  ':email',
                   ':name',
-                  ':sign'
+                  
               ))
               ->executeQuery(array(
                   ':login',
                   ':passwort',
-                  ':email',
                   ':name',
-                  ':sign'
+                  
               ),
                   array(
                       $login,
                       $passwort,
                       $name,
-                      $email,
-                      $signature
-                  )
+                      )
                   );
               
               $newId = $db->lastInsertId();
