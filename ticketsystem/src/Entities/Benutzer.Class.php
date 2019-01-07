@@ -190,7 +190,7 @@ class Benutzer extends Model {
             USER_TABLE_LOGIN  => $_POST['login'],
             USER_TABLE_NAME   => $_POST['name'],
            
-            USER_TABLE_SIGN   => $_POST['signature']       
+                  
         );
         
         $login = 
@@ -218,14 +218,14 @@ class Benutzer extends Model {
 	        $login,
 	        $passwort
 	    ))->as_array();
-	       
+	    if($result !== false){   
 	    foreach($result as $row){
 	    if ($row->size()>0){
 	        trigger_error('Unique username and and passwort required');
 	        return false;
 	       }
 	    }
-	   
+    }
 	  
 		
 		$db = Db::getInstance();
@@ -235,25 +235,25 @@ class Benutzer extends Model {
 		    USER_TABLE_LOGIN,
 		    USER_TABLE_PASSW,
 		    USER_TABLE_NAME,
-		    USER_TABLE_SIGN
+		   
 		),
 		    array(
 		   ':login',
 		   ':passwort',
 		   ':name',
-		   ':sign'
+		   
 		    ))
 		    ->executeQuery(array(
 		        ':login',
 		        ':passwort',
 		        ':name',
-		        ':sign'
+		        
 		    ),
 		array(
 		    $login,
 		    $passwort,
 		    $name,
-		    $signature
+		    
 		          )  
 		    );
 		    

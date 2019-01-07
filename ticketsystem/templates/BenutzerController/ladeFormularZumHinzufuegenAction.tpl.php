@@ -1,13 +1,12 @@
-<DOCTYPE html>
-<hmtl>
+<!DOCTYPE html>
+
 <head> 
   <title>Benutzer anlegen</title>
 </head>
 <body>
 
 <?php
- $supporter = $_GET['supporter'];
- $rang= intval($_GET['rang']);
+ 
 
  
  if(isset($_GET['register'])) {
@@ -34,8 +33,6 @@
  <input type ="text" name="name" value="<?php htmlentities($name)?>" placeholder="Name" />
  <input type ="password" name="passwort" value="<?php htmlentities($passwort)?>" placeholder="Passwort" />
  <input type ="password" name="passwort2" value="<?php htmlentities($passwort2)?>" placeholder="Passwort wiederholen" />
- <input type ="text" name="email" value="<?php htmlentities($email) ?>" placeholder="Email" />
- <textarea rows="5" cols="10" name="signature" value="<?php htmlentities($signature)?>" placeholder="Ihre Signatur"></textarea>
  <input type="submit" value="Abschicken" />
  </form>
  <ul>
