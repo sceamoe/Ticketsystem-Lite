@@ -48,9 +48,9 @@ class Benutzer extends Model {
    protected $table_properties = array(
        
        'mitarbeiter_id',
-       'email',
+    
        'name',
-       'signature',
+      
        'permissions',
        'session_handler',
        'loginVariable'
@@ -77,7 +77,7 @@ class Benutzer extends Model {
        $model = new Model();
        $result = $model->select(array(USER_TABLE_ID,
                             USER_TABLE_NAME,
-                            USER_TABLE_SIGN
+                           
        ))->from(USER_TABLE)
        ->where(USER_TABLE_PASSW,':loginVariable')
        ->executeQuery(':loginVariable',$this->loginVariable)->as_object();
