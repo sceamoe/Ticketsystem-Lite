@@ -25,6 +25,7 @@ if(!empty($_GET['ticket_id'])){
     $kunde            	= $post['kunde']; 
 	$telefon		 	= $post['telefon'];
 	$kurzbeschreibung 	= $post['kurzbeschreibung'];
+	$dringlichkeit		= $post['dringlichkeit'];
 	$loesung			= $post['loesung'];
   }
   
@@ -197,6 +198,8 @@ if(!empty($_GET['ticket_id'])){
 	</table>
 	  </div></p>
 
+</div>
+
 <div id ="formular">
 
 <form action="index.php?controller=ticket&action=updateTicket&amp;ticket_id=<?php echo $ticket_id; ?>" method="post">
@@ -249,8 +252,19 @@ if(!empty($_GET['ticket_id'])){
 	
 	</p>
 	<div id="lösung">
-	<textarea name="lösung" value="<?php echo htmlentities($lösung) ?>" cols="100" rows ="5" placeholder="Lösung"><?php echo trim($lösung, "\t."); ?>
-	</textarea>
+	<?php 
+	
+	if($lösung !== "")	{
+	
+	?>
+	
+	<textarea name="lösung" 
+			value="<?php echo (trim($lösung, "\t."));?>"
+			cols="100" rows ="5" 
+			placeholder="Lösung"></textarea>
+	<?php
+		}
+	?>
 	</div>
 	</fieldset>
 	

@@ -14,7 +14,7 @@ class MysqlSessionHandler extends Model{
     protected $table_properties = array(
         
         'session_id',
-        'aktivitätsZeitpunk',
+        'aktivitï¿½tsZeitpunk',
         'data',
         'mitarbeiter_id_fk',
         'permissions',
@@ -34,7 +34,7 @@ class MysqlSessionHandler extends Model{
     
     public function __construct(){
         $this->session_id = $session_id;
-        $this->aktivitätsZeitpunkt = $aktivitätsZeitpunkt;
+        $this->aktivitï¿½tsZeitpunkt = $aktivitï¿½tsZeitpunkt;
         $this->mitarbeiter_id_fk = $mitarbeiter_id_fk;
         
     }
@@ -48,12 +48,9 @@ class MysqlSessionHandler extends Model{
                 $model = new Model();
                 $this->result = $model->select(SESSION_TABLE_ID)
                     ->from(SESSION_TABLE_NAME)
-                    ->join(USER_TABLE)
-                    ->on('mitarbeiter.passwort',
-                        'php_session.data')
-                    ->where(SESSION_NAME_VAR,USER_TABLE_PASSW)
-                    ->where(SESSION_FORKEY,USER_TABLE_ID)
-                    ->executeQuery(USER_TABLE_ID,$mitarbeiter_id)
+                    ->join('mitarbeiter')->on('php_session.data','mitarbeiter.passwort')
+                    ->where('mitarbeiter_id_fk',':id')
+                    ->executeQuery(':id',$mitarbeiter_id)
                     ->as_object();
         
                     return $this->result;
@@ -78,7 +75,7 @@ class MysqlSessionHandler extends Model{
             
             
             } catch (PDOException $e){
-                echo "SEssion konnte nicht gelöscht werden", $e->getMessage();
+                echo "SEssion konnte nicht gelï¿½scht werden", $e->getMessage();
             }
             
     }
@@ -144,7 +141,7 @@ class MysqlSessionHandler extends Model{
         }
     }
         
-        public function löscheSessionAusDb($session_id){
+        public function lï¿½scheSessionAusDb($session_id){
             try{
                 
                 $db = Db::getInstance();
@@ -165,7 +162,7 @@ class MysqlSessionHandler extends Model{
                $stmt->execute();
             
             }catch (PDOException $e){
-                echo "Session konnte nicht gelöscht werden", $e->getMessage();
+                echo "Session konnte nicht gelï¿½scht werden", $e->getMessage();
             }
         }
         

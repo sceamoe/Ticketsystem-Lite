@@ -114,6 +114,7 @@
 			          return false;
 			        },
 			      select: function( event, ui ) {
+						event.preventDefault();
 				      $( "#mitarbeiter" ).val( ui.item.name );
 				      
 				      

@@ -16,20 +16,16 @@
 	header('Content-Type: text/html; charset=utf-8'); // sorgt für die Codierung
 	header('Cache-Control: must-revalidate, pre-check=0, no-store, no-cache, max-age=0, post-check=0');
 
- 
-	$supporter = $_GET['supporter'];
-	$rang = intval($_GET['rang']);
 	
 	echo '<ul>';
-	echo '<a href="index.php?action=zeige&amp;rang='.$rang.'&amp;supporter='.$supporter.'">Startseite</a>';
+	echo '<a href="index.php?action=zeige&amp">Startseite</a>';
 	echo '</ul>';
 ?>
 
 <?php
 
 		function show_form() {
-		$supporter = $_GET['supporter'];
-		$rang = intval($_GET['rang']);
+		
 		
 		 ?>
 	<div id="formular">
@@ -50,7 +46,8 @@
 	          return false;
 	        },
 	      select: function( event, ui ) {
-		      $( "#kunde" ).val( ui.item.kunde );
+		      event.preventDefault();
+			  $( "#kunde" ).val( ui.item.kunde );
 		      
 		      
 	      }
@@ -96,7 +93,7 @@
 		?>
 	</div>
 	<p>
-	<div id="kürzel">		
+	<div id="kurz">		
 			<textarea name="kurzbeschreibung" value="<?php echo htmlspecialchars($kurzbeschreibung); ?>" cols="100" placeholder="Kurzbeschreibung" ></textarea>
 	</div>
 	<p>

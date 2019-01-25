@@ -1,10 +1,9 @@
 <?php
 
-$supporter = $_GET['supporter'];
-$rang = intval($_GET['rang']);
+
 $string = $_POST['name'];
 
-echo '<a href="index.php?action=zeige&amp;rang='.$rang.'&amp;supporter='.$supporter.'">Startseite</a>';
+echo '<a href="index.php?action=zeige">Startseite</a>';
 
 if($_SERVER['REQUEST_METHOD'] != 'POST') {
 		
@@ -42,7 +41,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST') {
 		 else {
 	
 			$ticket->fuegeBildPfadInDbEin();
-			echo "Vielen Dank, "  .$supporter. " sie haben folgendes Ticket erstellt: <p/>";
+			echo "Vielen Dank, sie haben folgendes Ticket erstellt: <p/>";
 			echo 
 			     "Kunde: " .htmlspecialchars($_POST['kunde']). "<br/>",
 				 "Dinglichkeit: " .htmlspecialchars($_POST['dringlichkeit']). "<br/>",

@@ -22,9 +22,15 @@ class SessionAnalyser extends Db {
     }
     
     public function fetch(){
-        $session = each($this->sessions);
-        if($session){
-            return $session['value'];
+         foreach($this->sessions as $key => $value){
+            $session = $value;
+            
+           
+         }
+         
+         if($session){
+            return $session;
+           
         }
         else {
             reset($this->sessions);
@@ -37,7 +43,7 @@ class SessionAnalyser extends Db {
     private function parseSessions($sessionDaten){
      $benutzer = new Benutzer();
     
-     $benutzerDaten = $benutzer->findeAngemeldeteBenutzer($data);
+     $benutzerDaten = $benutzer->findeAngemeldeteBenutzer($sessionDaten);
      
      if(null !== $benutzerDaten ){
         

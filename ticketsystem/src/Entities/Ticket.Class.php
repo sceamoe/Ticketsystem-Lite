@@ -350,27 +350,30 @@ class Ticket extends Model
 		
 		  $newId = $this->fuegeDatenEinInZwischentabelle();
 		  $binaererCode = $this->ladeBildDateiinTempFolder();
-	      $datei_name = $_FILES['datei']['name'];
+        if(!empty($_FILES['datei']['name'])){
+            $datei_name = $_FILES['datei']['name'];
 			
-		  $model = new Model();
-		  $model->insert_into('datafile ')
-		  ->set(array('datei_name',
-		            'datei',
-		            'ticket_id_fk'),
-		        array(':datei_name',
-		            ':binaererCode',
-		            ':new_id')
-		   )->executeQuery(array(
-		            ':datei_name',
-		            ':binaererCode',
-		            ':new_id'),
-		            array($datei_name,
-		                  $binaererCode,
-		                  $newId
-		            ));
-		    
-		}
-	
+            $model = new Model();
+            $model->insert_into('datafile ')
+            ->set(array('datei_name',
+                      'datei',
+                      'ticket_id_fk'),
+                  array(':datei_name',
+                      ':binaererCode',
+                      ':new_id')
+             )->executeQuery(array(
+                      ':datei_name',
+                      ':binaererCode',
+                      ':new_id'),
+                      array($datei_name,
+                            $binaererCode,
+                            $newId
+                      ));
+              
+          }
+      
+        }
+         
 		
 	private function erzeugeRandomStringF�rDateiNamen(){
 	    
@@ -384,7 +387,8 @@ class Ticket extends Model
 	private function ladeBildDateiinTempFolder(){
 	    
 	    $erlaubtesFormat = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
-	    $erkanntesFormat = exif_imagetype($_FILES['datei']['tmp_name']);
+       if(!empty($_FILES['datei']['tmp_name'])){
+        $erkanntesFormat = exif_imagetype($_FILES['datei']['tmp_name']);
 	    if(!in_array($erkanntesFormat, $erlaubtesFormat)){
 	        die("Nur der Upload von Bilddateien ist gestattet");
 	    }
@@ -407,6 +411,8 @@ class Ticket extends Model
 	    $bin�rCode = base64_encode($neuerPfad);
 	    
 	    return $bin�rCode;
+       }
+       
 	}
 	
 	

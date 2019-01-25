@@ -1,6 +1,6 @@
 
 
-table {
+.ticket table {
 
   background-color: #ffeda0;
   border-collapse: separate;
@@ -8,24 +8,13 @@ table {
   box-shadow: 5px 3px 5px rgba(0,0,0,2);
   position: relative;
   z-index:0;
-  transition: box-shadow 450ms ease-in-out;
-  transition-property: width, box-shadow;
   margin-bottom:  1em;
   margin-left: 1em;
+  width: 100%;
+  height: auto;
 }
    
-   
-table:hover {
-		box-shadow: 10px 5px 5px hsl(0, 0%, 50%);
-		transition: 450ms;
-		transform: scale3d(1, 1, 1); 
-        transform: scale3d(1.05, 1.05, 1.05); 
-      
-		
-}
-
-
-caption {
+.ticket caption {
 color: white;
 background: hsl(13, 96%, 39%);
 font-size: 1.5em;
@@ -35,7 +24,7 @@ width: 10em;
 margin-left: -0.1em;
 position: relative;
 }
-caption::before {
+.ticket caption::before {
 content:"";
 position: absolute;
 display: block;
@@ -49,23 +38,37 @@ border-color: transparent hsl(13, 96%, 35%) transparent transparent;
 z-index: -1;
 }
 
-thead {
+.ticket thead {
   background-color: #f3c600;
   border-collapse: separate;
   
       }
 
-td, th {
+.ticket td, th {
    text-align: left;
    padding: 0.2em 0.5em;
    border-radius: 0.1em;
     }
-td {
+.ticket td {
 font-style:italic;
 box-shadow: inset 1px 3px 5px -3px rgba(0,0,0,0.5);
  }
 
- 
+.ticket td a{
+  width: 50%;
+  height: auto;
+  margin-left: 20%;
+	border: none;
+	background-color:#ffeda0;
+	color: #304FFE;
+  vertical-align: middle;
+}
+.ticket td a:hover {
+	color: white;	
+	background-color: #1E88E5;
+	transition: 300ms;
+	
+	}
  
  #button input {
 	 position: absolute;
@@ -76,4 +79,3 @@ box-shadow: inset 1px 3px 5px -3px rgba(0,0,0,0.5);
  }
 	 
 
-	 

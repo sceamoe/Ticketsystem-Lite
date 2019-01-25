@@ -9,19 +9,13 @@
 
  ($inhalt = $ticket->zeigeAlleTickets());
 
- foreach($inhalt as  $post){
+ 
    
-   $ticket_id 			= $post['ticket_id'];
-   $kunde				= $post['kunde'];
-   $dringlichkeit      	= $post['dringlichkeit'];
-   $_supporter			= $post['name']; 
-   $kurzbeschreibung 	= $post['kurzbeschreibung'];
   
-   $status 				= $post['status'];
            
-    
+    echo '<div class="ticket">';
       echo  '<link rel="stylesheet" href="style.css" type="text/css" />',
-	  '<a href="index.php?controller=ticket&action=ladeTicket&amp;ticket_id='.$ticket_id.'">',
+	 
             '<table><thead>',
             '<tr>',
             '<th>Ticket_nr</th>',
@@ -33,20 +27,24 @@
             '<th>Status</th>',
             '</tr>',
             '</thead>';
+    
+            foreach($inhalt as  $post){
       echo  '<tbody>',
-            '<td>'.$ticket_id.'</td>',
-            '<td>'.$kunde.'</td>',
-			'<td>'.$dringlichkeit.'</td>',
-			'<td>'.$_supporter.'</td>',
-            '<td>'.$kurzbeschreibung.'</td>',
+            '<td><a href="index.php?controller=ticket&action=ladeTicket&amp;ticket_id='.$post['ticket_id'].'">'.$post['ticket_id'].'</td></a>',
+            '<td>'.$post['kunde'].'</td>',
+			'<td>'.$post['dringlichkeit'].'</td>',
+			'<td>'.$post['name'].'</td>',
+            '<td>'.$post['kurzbeschreibung'].'</td>',
 			
-            '<td>'.$status.'</td>',
-            '</tbody>',
-            '</table> ';
-			'</a>';
+            '<td>'.$post['status'].'</td>',
+            '</tbody>';
+            
+		
 			
  
   
  
 }
+echo '</table> ';
+echo '</div>'
 ?>

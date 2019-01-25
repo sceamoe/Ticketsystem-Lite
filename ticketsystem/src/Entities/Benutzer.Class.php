@@ -73,7 +73,7 @@ class Benutzer extends Model {
        
        $session = new Session();
        $this->loginVariable = $session->getSessionName(USER_LOGIN_VAR);
-       
+    
        $model = new Model();
        $result = $model->select(array(USER_TABLE_ID,
                             USER_TABLE_NAME,
@@ -258,8 +258,48 @@ class Benutzer extends Model {
 		    );
 		    
     	$newId = $db->lastInsertId();
-		
+        
+        
+        $model = new Model();
+        $gruppe = $model->select('gruppen_id')->from('gruppen')
+        ->where('name',':name')
+        ->executeQuery(':name',$_POST['gruppe'])->as_object();
+        
+        
+        $this->insertMitarb_Gruppen($newId, $gruppe->gruppen_id);
+        
     return true;	
+  }
+
+  
+  
+  private function insertMitarb_Gruppen($newId,$gruppe){
+
+    $db = Db::getInstance();
+    $model = new Model();
+    $model->insert_into('mitarbeiter_gruppen')
+    ->set(array(
+        'mitarbeiter_id_fk',
+        'gruppen_id_fork'
+       
+    ),
+        array(
+       ':mitarbeiter_id_fk',
+       ':gruppen_id_fork',
+       
+       
+        ))
+        ->executeQuery(array(
+            ':mitarbeiter_id_fk',
+            ':gruppen_id_fork',
+            
+            
+        ),
+    array(
+        $newId,
+        $gruppe,
+        )  
+        );
   }
 
   public  function fuegeSupporterinDbHinzu() {

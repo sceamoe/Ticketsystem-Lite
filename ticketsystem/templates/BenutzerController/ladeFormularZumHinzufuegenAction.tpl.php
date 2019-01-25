@@ -10,7 +10,7 @@
 
  
  if(isset($_GET['register'])) {
-  $name      = $_POST['name'];
+ 
   $passwort = $_POST['passwort'];
   $passwort2= $_POST['passwort2'];
  
@@ -28,11 +28,12 @@
 }
 
 ?>
-<form action="index.php?controller=benutzer&action=fuegeBenutzerinDbHinzu&amp;rang=<?php echo $rang ?>&amp;name=<?php echo $supporter?>" method="post">
- <input type="text" name="login" value="<?php htmlentities($login) ?>" placeholder="Ihr username"/>
- <input type ="text" name="name" value="<?php htmlentities($name)?>" placeholder="Name" />
- <input type ="password" name="passwort" value="<?php htmlentities($passwort)?>" placeholder="Passwort" />
- <input type ="password" name="passwort2" value="<?php htmlentities($passwort2)?>" placeholder="Passwort wiederholen" />
+<form action="index.php?controller=benutzer&action=fuegeBenutzerinDbHinzu" method="post">
+ <input type="text" name="login" placeholder="Ihr username"/>
+ <input type ="text" name="name" placeholder="Name" />
+ <input type ="password" name="passwort" placeholder="Passwort" />
+ <input type ="password" name="passwort2" placeholder="Passwort wiederholen" />
+ <input type ="text" name="gruppe" placeholder="GruppenName">
  <input type="submit" value="Abschicken" />
  </form>
  <ul>

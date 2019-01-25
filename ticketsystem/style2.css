@@ -65,40 +65,9 @@ table {
   margin-left: 1em;
 }
    
-   
-table:hover {
-		box-shadow: 10px 5px 5px hsl(0, 0%, 50%);
-		transition: 450ms;
-		transform: scale3d(1, 1, 1); 
-        transform: scale3d(1.01, 1.01, 1.01); 
-      
-		
-}
 
 
-caption {
-color: white;
-background: hsl(13, 96%, 39%);
-font-size: 1.5em;
-box-shadow: 0.1em 0.1em 0.1em 0 hsl(0, 0%, 50%);
-padding: 0.2em 0.2em 0.2em 2em;
-width: 10em;
-margin-left: -0.1em;
-position: relative;
-}
-caption::before {
-content:"";
-position: absolute;
-display: block;
-height: 0;
-width: 0;
-top: 1em;
-left:-0.6em;
-border-style: solid;
-border-width: 0.6em;
-border-color: transparent hsl(13, 96%, 35%) transparent transparent;
-z-index: -1;
-}
+
 
 thead {
   background-color: #f3c600;
@@ -119,12 +88,6 @@ box-shadow: inset 1px 3px 5px -3px rgba(0,0,0,0.5);
  }
 
  
- 
-
-
-
-	 
-
 .tabBlock {
 			background-color:orange;
             border:solid 0px #FFA54F;
@@ -188,36 +151,10 @@ input {
 	align-items: center;
 	justify-content: center;
 
-	width: 50%%;
-	
-}
-#formular #kürzel {
-	vertical-align: top;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	width: 50%%;
+	width: 50%;
 	
 }
 
-#formular #nachricht {
-	vertical-align: middle;
-	display: flex;
-	align-items: center;
-	justify-content: center;;
-
-}
-
-#formular #lösung {
-
-    vertical-align: middle;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-
-}
 
 #formular .zuweisung select{
 	width: 10%;
@@ -259,3 +196,4 @@ input {
 	border: 1px;
 	background-color:#283593;
 	color: hsla(0, 0%, 100%, 0.7);
+}

@@ -22,23 +22,20 @@
      <?php 
     
      $session = new Session();
-     $data = $session->getSessionName('USER_LOGIN_VAR');
-    if($data !== false)
+     $loginVar = $session->getSessionName('USER_LOGIN_VAR');
+    if($loginVar !== false)
     {
        
         echo '<a href="index.php?action=logout">Abmelden</a><p/>'; 
+      
+        
         $sAnalyser = new SessionAnalyser();
-        $sAnalyser->erstelleWarteschlangeAusSessionDaten($data);
+        $sAnalyser->erstelleWarteschlangeAusSessionDaten($loginVar);
+        $SessionStore = $sAnalyser->fetch();    
+        $membersOnline = '';
+         
             
-            
-       
-            $membersOnline = '';
-            
-            while($SessionStore = $sAnalyser->fetch())
-            {
-                
-            
-                if(null !== $SessionStore)
+         if(null !== $SessionStore)
                 {
                     foreach($SessionStore as $sessionOutput)
                     {
@@ -53,7 +50,7 @@
                     
                 }
                    
-            }
+            
         
         
        
