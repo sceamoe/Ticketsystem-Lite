@@ -11,7 +11,7 @@ if(!empty($_GET['ticket_id'])){
  $inhalt = $ticket->ladeTicket();
  $datafile = new Datafile();
  $result = $datafile->ladeDatafile();
- if(null !== $result){
+ if(false !== $result){
     foreach($result as $posts){
          $datei_name = $posts['datei_name'];
     }
@@ -199,10 +199,11 @@ if(!empty($_GET['ticket_id'])){
 	  </div></p>
 
 </div>
+<? function showForm(){
+ ?>
+ <div id ="formular">
 
-<div id ="formular">
-
-<form action="index.php?controller=ticket&action=updateTicket&amp;ticket_id=<?php echo $ticket_id; ?>" method="post">
+<form action="index.php?controller=ticket&action=ladeTicket&amp;ticket_id=<?php echo $ticket_id; ?>" method="post">
   <fieldset>
 	<div class="name">
 	    
@@ -226,7 +227,9 @@ if(!empty($_GET['ticket_id'])){
 			'<option value="kritisch">kritisch</option>',
   
 			'</select>';
-		
+		   if(empty($_POST['dringlichekit'])){
+			 echo $_POST['dringlichkeit'] = $dringlichkeit;
+		   }
 		
 		?>
 	</p>
@@ -272,6 +275,9 @@ if(!empty($_GET['ticket_id'])){
 	<input type="submit" value="speichern" />
 
 </form>
+<?
+}
+?>
 
 
 </div>
@@ -290,11 +296,40 @@ if(!empty($_GET['ticket_id'])){
  </html>
  
 <?php
+ 
+ 
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
+		if( empty($_POST['kurzbeschreibung']) 	||
+	
+			empty($_POST['nachricht']) 	||
+		
+			empty($_POST['kunde'])   	||
 
+			empty($_POST['dringlichkeit'])) 
+		{
+			echo "Ticket ist nicht vollständig ausgefüllt \n";
+			$_POST['dringlichkeit'] = $dringlichkeit;
+			showForm(); 
+	
+	
 
-
+		} else {
+				$ticket->updateTicket();
+				echo "Vielen Dank, Ticket wurde gespeichert";
+		}		echo '<ul>
+		<li><a href="index.php?action=zeige">Startseite</a>
+		</li>
+	 </ul>';
+		
+	}
 }
+		
+	
+
+
+
+
 ?>
   
 

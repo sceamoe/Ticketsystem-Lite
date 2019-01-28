@@ -36,12 +36,7 @@ class TicketController extends AbstractBase {
        
     } 
 
-    protected function updateTicketAction()
-    {
-     
-         $this->setActionParameters('ticket', setObjektNameAusKlassenName());
-
-    }
+    
 	
 	protected function fuegeTicketEinAction() {
 		

@@ -113,7 +113,7 @@
 		foreach($posts as $nr => $post) {
 		  $name[$nr] .= $post['name'];
 		}
-	echo '<select name="name" size=5" >',
+	echo '<select name="name" size=7" >',
 		    
 		 '<option value="'.$name[0].'">'.$name[0].'</option>',
 		 '<option value="'.$name[1].'">'.$name[1].'</option>',

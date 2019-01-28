@@ -18,9 +18,9 @@ if($_SERVER['REQUEST_METHOD'] != 'POST') {
 		}
 		
 		
-		if(	empty($_POST['dringlichkeit']))
+		if(empty($_POST['dringlichkeit']))
 		{
-			echo "<p> Dringlichkeit ist nicht ausgefüllt, ";
+			$_POST['dringlichkeit'] = $dringlichkeit;
 			
 				
 		} 
