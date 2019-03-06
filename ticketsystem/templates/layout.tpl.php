@@ -79,7 +79,7 @@
 		
      	<script>
        
-		var url = 'ws://localhost:8080';
+		var url = 'wss://localhost:8100';
         var socket = new WebSocket(url);
        
 
@@ -87,7 +87,7 @@
 			console.log(event);
 			if (socket.readyState === WebSocket.OPEN){
 				
-				if(typeof socket.send(message) !== 'undefinded'){
+				if(typeof socket.send(messageArray) !== 'undefinded'){
 					
 				console.log('message send: '+message);
 				}

@@ -69,9 +69,9 @@
 							else this.tail = newNode;
 							this.head = newNode;
 						};
-
-						var x =  JSON.parse(jsonObject);
-						for(i=0;i<x.length;i++){
+						if(typeof(jsonObject) !== 'undefined'){
+							var x =  JSON.parse(jsonObject);
+							for(i=0;i<x.length;i++){
 							
 							const list = new LinkedList();
 							list.addToHead(x[i].nachricht);
@@ -83,8 +83,10 @@
 							createMessageOutputNodes(`${list.head.value}`, `${list.head.next.value}`, `${list.tail.value}`)
 							latestID = `${list.head.next.value}`;
 					
+						}
 		
-		
+						}
+					
 		
 
 		
@@ -133,7 +135,7 @@
 				        url: 'index.php?controller=message&action=ladeMessageFormular',
 				        type: 'POST',
 				        data: {
-				            //email: 'email@example.com',
+				           
 				            message: '<?php $_POST['nachricht']?>'
 				        },
 				        success: function(msg) {
@@ -160,8 +162,7 @@
 	
 		<textarea name="nachricht" 
 		value="<?php  echo htmlentities($nachricht); ?>" 
-		cols="50" rows ="5" placeholder="Schreib etwas...">
-		</textarea>
+		cols="50" rows ="5" placeholder="Schreib etwas..."></textarea>
 
 	
 		</div>
@@ -181,12 +182,16 @@
 		$messageNotification = $message->schreibNeueMessageInDb();
 		?>
 		<script>
-var url = 'ws://localhost:8080';
-var socket = new WebSocket(url);
-var message = '<?php echo $messageNotification ?>';
+
+	var url = 'wss://localhost:8100';
+	var socket = new WebSocket(url);
+	var messageArray  = [];
+	messageArray["notification"] = '<?php echo $messageNotification ?>';
+	messageArray["message"] = '<?php echo $_POST['nachricht'] ?>';
+	console.log(messageArray);
 
 
-
+/
 	socket.onopen = function(e) {
 		var message = '<?php echo $messageNotification?>';
 	
